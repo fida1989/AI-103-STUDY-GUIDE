@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-103 Study Guide & Exam Prep: Developing AI Apps and Agents on Azure</title>
+  <meta name="description" content="Extensive study guide, interactive practice exam, flashcards, and architecture deep-dives for Microsoft Exam AI-103: Developing AI Apps and Agents on Azure.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand" data-view-target="modules">
+        <div class="brand-icon">AI</div>
+        <div class="brand-title">
+          <span class="brand-name">Azure AI-103</span>
+          <span class="badge-cert">April 2026</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a class="nav-link active" data-view-target="modules">
+          <span class="nav-icon">📚</span>
+          <span class="nav-text">Modules</span>
+        </a>
+        <a class="nav-link" data-view-target="flashcards">
+          <span class="nav-icon">🗂️</span>
+          <span class="nav-text">Flashcards</span>
+        </a>
+        <a class="nav-link" data-view-target="quiz">
+          <span class="nav-icon">📝</span>
+          <span class="nav-text">Exam & Quiz</span>
+        </a>
+        <a class="nav-link" data-view-target="diagrams">
+          <span class="nav-icon">🗺️</span>
+          <span class="nav-text">Architectures</span>
+        </a>
+        <a class="nav-link" data-view-target="cheatsheet">
+          <span class="nav-icon">💻</span>
+          <span class="nav-text">Cookbook</span>
+        </a>
+        <a class="nav-link" data-view-target="diagnostic">
+          <span class="nav-icon">🎯</span>
+          <span class="nav-text">Diagnostic</span>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+          🌓
+        </button>
+        <button class="btn-primary btn-header-cta" data-view-target="quiz" onclick="switchView('quiz')">
+          <span>Mock Exam</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="app-main">
+    
+    <!-- Hero / Certification Overview Banner -->
+    <section class="hero-banner" id="heroBanner">
+      <button id="heroToggleBtn" class="btn-toggle-hero" title="Toggle Overview Banner">
+        <span class="hero-toggle-text">Minimize</span>
+        <span class="hero-toggle-icon">−</span>
+      </button>
+
+      <div class="hero-content">
+        <h1>AI-103: Developing AI Apps and Agents on Azure</h1>
+        <p class="hero-subtitle">
+          Interactive preparation for the Microsoft Certified Azure AI Engineer Associate certification, covering foundation models, multimodal flows, and autonomous multi-agent systems in Microsoft Foundry.
+        </p>
+        <div class="hero-meta-grid">
+          <div class="hero-stat">
+            <span class="hero-stat-label">Pass Score</span>
+            <span class="hero-stat-val">700 / 1000</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Duration</span>
+            <span class="hero-stat-val">100–120 Mins</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Format</span>
+            <span class="hero-stat-val">Scenarios & MCQ</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Core Platform</span>
+            <span class="hero-stat-val">Microsoft Foundry</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Study Progress Card -->
+      <div class="hero-progress-card">
+        <div class="progress-header">
+          <span class="progress-title">Study Mastery</span>
+          <span id="heroProgressPercent" class="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="heroProgressBar" class="progress-bar-fill"></div>
+        </div>
+        <div class="progress-stats-row">
+          <span id="heroProgressStats">0 of 14 Objectives Mastered</span>
+          <span>Click checkboxes to track</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Domain Weights Horizontal Strip -->
+    <div class="domains-strip-header">
+      <span class="section-label">Exam Domains & Weightages</span>
+      <span class="swipe-hint">← Swipe to explore domains →</span>
+    </div>
+
+    <section class="domain-weights-row">
+      <div class="domain-weight-card" onclick="filterByDomainFromHero('DOM-01')">
+        <div class="domain-weight-header">
+          <span class="domain-code-pill">DOM-01</span>
+          <span class="domain-weight-badge">25–30%</span>
+        </div>
+        <div class="domain-weight-title">Plan & Manage an Azure AI Solution</div>
+      </div>
+      <div class="domain-weight-card" onclick="filterByDomainFromHero('DOM-02')">
+        <div class="domain-weight-header">
+          <span class="domain-code-pill">DOM-02</span>
+          <span class="domain-weight-badge" style="color: var(--azure-cyan);">30–35%</span>
+        </div>
+        <div class="domain-weight-title">Generative AI & Agentic Solutions</div>
+      </div>
+      <div class="domain-weight-card" onclick="filterByDomainFromHero('DOM-03')">
+        <div class="domain-weight-header">
+          <span class="domain-code-pill">DOM-03</span>
+          <span class="domain-weight-badge">10–15%</span>
+        </div>
+        <div class="domain-weight-title">Computer Vision Solutions</div>
+      </div>
+      <div class="domain-weight-card" onclick="filterByDomainFromHero('DOM-04')">
+        <div class="domain-weight-header">
+          <span class="domain-code-pill">DOM-04</span>
+          <span class="domain-weight-badge">10–15%</span>
+        </div>
+        <div class="domain-weight-title">Text Analysis Solutions</div>
+      </div>
+      <div class="domain-weight-card" onclick="filterByDomainFromHero('DOM-05')">
+        <div class="domain-weight-header">
+          <span class="domain-code-pill">DOM-05</span>
+          <span class="domain-weight-badge">10–15%</span>
+        </div>
+        <div class="domain-weight-title">Information Extraction Solutions</div>
+      </div>
+    </section>
+
+    <!-- VIEW 1: STUDY MODULES -->
+    <section id="view-modules" class="view-section active">
+      <div class="modules-filter-bar">
+        <div class="search-input-wrapper">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="moduleSearchInput" class="search-input" placeholder="Search objectives, SDK calls, code snippets (Press '/' to focus)...">
+        </div>
+
+        <div class="filter-pills-row">
+          <button class="filter-pill active" data-filter-domain="ALL">All Domains</button>
+          <button class="filter-pill" data-filter-domain="DOM-01">1: Plan & Manage (25-30%)</button>
+          <button class="filter-pill" data-filter-domain="DOM-02">2: GenAI & Agents (30-35%)</button>
+          <button class="filter-pill" data-filter-domain="DOM-03">3: Computer Vision (10-15%)</button>
+          <button class="filter-pill" data-filter-domain="DOM-04">4: Text Analysis (10-15%)</button>
+          <button class="filter-pill" data-filter-domain="DOM-05">5: Info Extraction (10-15%)</button>
+        </div>
+      </div>
+
+      <div id="modulesContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: FLASHCARDS (Spaced Repetition) -->
+    <section id="view-flashcards" class="view-section">
+      <div class="flashcards-container">
+        <div class="flashcard-controls">
+          <div>
+            <label for="fcDomainFilter" style="font-size: 0.85rem; color: var(--text-secondary); margin-right: 0.5rem;">Filter Domain:</label>
+            <select id="fcDomainFilter" class="flashcard-filter-select">
+              <option value="ALL">All Flashcard Topics</option>
+              <option value="DOM-01">Domain 1: Plan & Manage AI</option>
+              <option value="DOM-02">Domain 2: GenAI & Agents</option>
+              <option value="DOM-03">Domain 3: Computer Vision</option>
+              <option value="DOM-04">Domain 4: Text Analysis</option>
+              <option value="DOM-05">Domain 5: Information Extraction</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <button id="fcShuffleBtn" class="btn-secondary" title="Shuffle Cards">🔀 Shuffle</button>
+            <button id="fcMarkKnownBtn" class="btn-secondary">Mark as Mastered</button>
+          </div>
+        </div>
+
+        <!-- 3D Flippable Card -->
+        <div class="flashcard-scene" id="flashcardScene" title="Click or Press Space to Flip">
+          <div class="flashcard" id="flashcardElement">
+            <!-- Front Face -->
+            <div class="card-face card-face-front">
+              <div class="card-tag-row">
+                <span class="card-domain-badge" id="fcDomainBadge">DOM-01</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);" id="fcTag">CONCEPT</span>
+              </div>
+              <div class="card-main-text" id="fcFrontText">
+                Loading question...
+              </div>
+              <div class="card-footer-hint">
+                💡 Click card or press <strong>Spacebar</strong> to reveal answer
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div class="card-face card-face-back">
+              <div class="card-tag-row">
+                <span style="font-size: 0.75rem; color: var(--success); font-weight: 700;">ANSWER & DEEP DIVE</span>
+                <span id="fcCounter" style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary);">1 / 25</span>
+              </div>
+              <div class="card-main-text" id="fcBackText" style="font-size: 1.05rem;">
+                Loading answer...
+              </div>
+              <div class="card-footer-hint">
+                Use <strong>← / →</strong> arrow keys to browse next card
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Navigation Buttons -->
+        <div class="flashcard-nav-buttons">
+          <button id="fcPrevBtn" class="btn-secondary" aria-label="Previous card">← Previous Card</button>
+          <button id="fcNextBtn" class="btn-primary" aria-label="Next card">Next Card →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: PRACTICE QUIZ & TIMED EXAM -->
+    <section id="view-quiz" class="view-section">
+      <div class="quiz-container">
+        
+        <div class="quiz-top-bar">
+          <div class="quiz-mode-selector">
+            <button id="quizTabPractice" class="btn-primary">Practice Mode (Instant Feedback)</button>
+            <button id="quizTabExam" class="btn-secondary">Timed Simulation (100 Mins)</button>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <select id="quizDomainSelect" class="flashcard-filter-select">
+              <option value="ALL">All Domains</option>
+              <option value="DOM-01">Domain 1: Plan & Manage</option>
+              <option value="DOM-02">Domain 2: GenAI & Agents</option>
+              <option value="DOM-03">Domain 3: Computer Vision</option>
+              <option value="DOM-04">Domain 4: Text Analysis</option>
+              <option value="DOM-05">Domain 5: Info Extraction</option>
+            </select>
+
+            <div id="quizTimerDisplay" class="quiz-timer-box" style="display: none;">
+              <span>⏱️</span>
+              <span id="quizTimerText">100:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question View Container -->
+        <div id="quizActiveArea">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <!-- Final Score Report Area -->
+        <div id="quizReportArea" style="display: none;">
+          <!-- Populated after submit -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 4: INTERACTIVE ARCHITECTURE DIAGRAMS -->
+    <section id="view-diagrams" class="view-section">
+      <div class="diagram-container">
+        <div class="diagram-tabs">
+          <button class="diagram-tab active" data-diagram-id="rag-flow">
+            1. Enterprise RAG & Grounding Pipeline
+          </button>
+          <button class="diagram-tab" data-diagram-id="agent-lifecycle">
+            2. Azure AI Agent Service Lifecycle
+          </button>
+          <button class="diagram-tab" data-diagram-id="safety-pipeline">
+            3. Responsible AI & Guardrail Pipeline
+          </button>
+        </div>
+
+        <div class="diagram-canvas" id="diagramCanvasArea">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: CODE COOKBOOK & CHEATSHEET -->
+    <section id="view-cheatsheet" class="view-section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.35rem; font-weight: 700;">Azure AI Developer Code Cookbook</h2>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            Copyable production-ready Python SDK and Azure CLI patterns for AI-103 scenarios.
+          </p>
+        </div>
+
+        <div>
+          <select id="cheatsheetFilter" class="flashcard-filter-select">
+            <option value="ALL">All Categories</option>
+            <option value="Authentication & Foundry SDK">Authentication & Foundry SDK</option>
+            <option value="Agents & Workflows">Agents & Workflows</option>
+            <option value="Search & RAG">Search & RAG</option>
+            <option value="Document Intelligence">Document Intelligence</option>
+            <option value="Responsible AI">Responsible AI</option>
+            <option value="Computer Vision">Computer Vision</option>
+            <option value="Speech & Audio">Speech & Audio</option>
+            <option value="Azure CLI & Infrastructure">Azure CLI & Infrastructure</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="cheatsheetContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- VIEW 6: EXAM READINESS DIAGNOSTIC -->
+    <section id="view-diagnostic" class="view-section">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.35rem; font-weight: 700;">Exam Readiness Diagnostic Calculator</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+          Rate your confidence level across each of the 5 official domains to predict your exam score and generate personalized prescriptive study actions.
+        </p>
+      </div>
+
+      <div class="diagnostic-grid">
+        <div class="diagnostic-inputs">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Domain Confidence Self-Assessment</h3>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Domain 1: Plan and Manage (25–30%)</span>
+              <span class="slider-val" id="val-d1">50%</span>
+            </div>
+            <input type="range" class="diagnostic-slider" id="slider-d1" min="0" max="100" value="50">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Domain 2: GenAI & Agents (30–35%)</span>
+              <span class="slider-val" id="val-d2">50%</span>
+            </div>
+            <input type="range" class="diagnostic-slider" id="slider-d2" min="0" max="100" value="50">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Domain 3: Computer Vision (10–15%)</span>
+              <span class="slider-val" id="val-d3">50%</span>
+            </div>
+            <input type="range" class="diagnostic-slider" id="slider-d3" min="0" max="100" value="50">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Domain 4: Text Analysis (10–15%)</span>
+              <span class="slider-val" id="val-d4">50%</span>
+            </div>
+            <input type="range" class="diagnostic-slider" id="slider-d4" min="0" max="100" value="50">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Domain 5: Information Extraction (10–15%)</span>
+              <span class="slider-val" id="val-d5">50%</span>
+            </div>
+            <input type="range" class="diagnostic-slider" id="slider-d5" min="0" max="100" value="50">
+          </div>
+        </div>
+
+        <div class="diagnostic-results">
+          <div style="text-align: center;">
+            <span style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Projected Scaled Score</span>
+            <div id="diagnosticScoreVal" style="font-size: 2.75rem; font-weight: 800; color: var(--azure-cyan); margin: 0.25rem 0;">
+              500 / 1000
+            </div>
+            <div id="diagnosticVerdict" style="font-weight: 600; font-size: 0.95rem;">
+              Study Required. Focus on core domains.
+            </div>
+          </div>
+
+          <div class="recommendations-box">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--azure-cyan);">Prescriptive Study Recommendations</h4>
+            <ul id="diagnosticRecList">
+              <!-- Rendered dynamically -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- App Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div>
+        <strong>Azure AI-103 Interactive Study Guide</strong> • Designed for candidates preparing for the <em>Developing AI Apps and Agents on Azure</em> certification.
+      </div>
+      <div>
+        <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103" target="_blank" rel="noopener noreferrer" style="color: var(--azure-cyan); text-decoration: none;">
+          Official Microsoft Study Guide Reference ↗
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data/curriculum.js"></script>
+  <script src="data/questions.js"></script>
+  <script src="data/flashcards.js"></script>
+  <script src="data/cheatsheet.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    // Quick helper for hero domain card clicks
+    function filterByDomainFromHero(domainCode) {
+      switchView('modules');
+      const pills = document.querySelectorAll(".filter-pill[data-filter-domain]");
+      pills.forEach(p => {
+        if (p.getAttribute("data-filter-domain") === domainCode) {
+          p.click();
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
